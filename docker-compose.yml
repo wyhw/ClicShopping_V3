@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  php:
+    build:
+      context: .
+    ports:
+      - "8030:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - mysql
+    stdin_open: true
+    tty: true
+
+  mysql:
+    image: mariadb:10.11.7
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD : "ccSv3Gpt"
